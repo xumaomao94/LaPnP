@@ -1,0 +1,17 @@
+24-07-10 18:24:57.980 : Model path: model_zoo\drunet_gray.pth
+24-07-10 18:24:57.980 : Params number: 32638656
+24-07-10 18:24:57.980 : model_name:drunet_gray, model sigma:15, image sigma:15
+24-07-10 18:24:57.980 : testsets\set12
+24-07-10 18:25:00.454 : 01.png - PSNR: 32.91 dB; SSIM: 0.9168.
+24-07-10 18:25:02.710 : 02.png - PSNR: 35.83 dB; SSIM: 0.9080.
+24-07-10 18:25:04.955 : 03.png - PSNR: 33.57 dB; SSIM: 0.9155.
+24-07-10 18:25:07.358 : 04.png - PSNR: 32.44 dB; SSIM: 0.9184.
+24-07-10 18:25:09.586 : 05.png - PSNR: 33.61 dB; SSIM: 0.9537.
+24-07-10 18:25:11.979 : 06.png - PSNR: 31.99 dB; SSIM: 0.9116.
+24-07-10 18:25:14.228 : 07.png - PSNR: 32.13 dB; SSIM: 0.9100.
+24-07-10 18:25:20.850 : 08.png - PSNR: 34.93 dB; SSIM: 0.9077.
+24-07-10 18:25:27.356 : 09.png - PSNR: 33.44 dB; SSIM: 0.9310.
+24-07-10 18:25:33.962 : 10.png - PSNR: 32.71 dB; SSIM: 0.8690.
+24-07-10 18:25:40.222 : 11.png - PSNR: 32.61 dB; SSIM: 0.8852.
+24-07-10 18:25:46.840 : 12.png - PSNR: 32.78 dB; SSIM: 0.8908.
+24-07-10 18:25:46.840 : Average PSNR/SSIM(RGB) - set12_dn_drunet_gray - PSNR: 33.25 dB; SSIM: 0.9098
