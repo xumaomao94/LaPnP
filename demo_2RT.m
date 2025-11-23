@@ -81,20 +81,23 @@ end
 
 %% recover X
 % -------- bm3d ----------
+tic
 [X_bm3d, time_bm3d, S_bm3d, C_bm3d] = sc_pnp(X_observed, Omega, R, "BM3D", ...
                                             'BuildingMask',BuildingMask);
 X_bm3d = X_bm3d.*(1-BuildingMask);
-
+toc
 % -------- dpir ----------
+tic
 [X_dpir, time_dpir, S_dpir, C_dpir] = sc_pnp(X_observed, Omega, R, "DPIRNet",...
                                             'BuildingMask',BuildingMask);
 X_dpir = X_dpir.*(1-BuildingMask);
-
+toc
 % -------- nlm ----------
+tic
 [X_nlm, time_nlm, S_nlm, C_nlm] = sc_pnp(X_observed, Omega, R, "NLM",...
                                         'BuildingMask',BuildingMask);
 X_nlm = X_nlm.*(1-BuildingMask);
-
+toc
 
 %% evaluation
 kk = 10; figure;
