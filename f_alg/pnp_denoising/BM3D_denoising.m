@@ -32,7 +32,8 @@ function [Z_est,Normalizer] = BM3D_denoising(S,W,rho,lambda,varargin)
         [w,h,~]=size(input);
         
         if ismac
-            output = BM3D_mac_adapt(input, inputNoiseSigma);
+            inputNoiseSigma_mac = inputNoiseSigma / 255;
+            output = BM3D_mac_adapt(input, inputNoiseSigma_mac);
         else
             [~,output] = BM3D(1, input, inputNoiseSigma);
         end

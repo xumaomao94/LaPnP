@@ -6,7 +6,12 @@ addpath(genpath('f_alg'))
 addpath('f_evaluation')
 
 % Load BM3D denoiser
-addpath(genpath(fullfile(pwd, 'Denoisers', 'BM3D')));
+if ismac
+    addpath(genpath(fullfile(pwd, 'Denoisers', 'bm3d_matlab_package_4.0.3')));
+else
+    addpath(genpath(fullfile(pwd, 'Denoisers', 'BM3D')));
+end
+
 
 % Load DRUnet, utils has been changed to utils1
 addpath(fullfile(pwd, 'Denoisers', 'DPIR-master'));
@@ -23,7 +28,6 @@ for i = 1:length(py_path)
 end
 dpirModel = py.importlib.import_module('dpir_denoising_interface');
 py.importlib.reload(dpirModel);
-
 
 %% user define
 map_size = [51,51,32];

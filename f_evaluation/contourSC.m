@@ -41,7 +41,7 @@ function contourSC(mask,varargin)
                 set(gca,'XTick',[],'YTick',[])
                 colormap jet;
                 clim([max(-140,10*log10(xmin(1))),min(10,10*log10(xmax(1)))+2])
-                clim([-113,-70])
+                % clim([-113,-70])
             end
         
         end

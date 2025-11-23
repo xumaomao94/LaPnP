@@ -1,4 +1,4 @@
-function [y_est, blocks] = BM3D(z, sigma_psd, profile, stage_arg, blockmatches)
+function [y_est, blocks] = BM3D_mac_adapt(z, sigma_psd, profile, stage_arg, blockmatches)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %  BM3D is an algorithm for attenuation of additive spatially correlated
