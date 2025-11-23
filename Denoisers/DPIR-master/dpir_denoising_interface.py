@@ -31,7 +31,7 @@ def dpir(input,NoiseSigma):
         n_channels = 1                   # 1 for grayscale image
 
     # dir_path = 'c:\\Users\\xul2\\Codes\\pnp-denoiser\\DPIR-master'
-    dir_path = os.path.join(os.getcwd(), 'Denoisers\\DPIR-master')
+    dir_path = os.path.join(os.getcwd(), 'Denoisers', 'DPIR-master')
     model_pool = 'model_zoo'             # fixed
     task_current = 'dn'                  # 'dn' for denoising
 

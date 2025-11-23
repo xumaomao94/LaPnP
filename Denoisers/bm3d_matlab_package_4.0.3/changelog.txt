@@ -1,0 +1,64 @@
+Changelog for BM3D Python / Matlab (https://webpages.tuni.fi/foi/GCF-BM3D/#ref_software)
+
+python 4.0.3 // matlab 4.0.3
+
+Matlab: updated BM4D dependency to v4.2.5.
+
+python 4.0.3 // matlab 4.0.2
+
+Updated required version of Python to 3.9. Updated bm4d dependency that has
+Linux compiled code with less recent GCC.
+
+python 4.0.2 // matlab 4.0.2
+
+Updated BM4D dependency to version 4.2.4 for compatibility with macOS M-series ARM binaries.
+
+python 4.0.1 // matlab 4.0.1
+
+Fix PSD dimensionality issue with multichannel. Update BM4D dependency.
+
+python 4.0.0 // matlab 4.0.0
+
+Both packages now depend on "bm4d" for binaries. Removes the OpenBLAS dependency and adds much better multithreading support and the option for sharpening.
+Number of threads is controlled by profile variable "num_threads". Multithreading causes slight variation in output due to numerical precision of addition, which can be eliminated by num_threads=1. Sharpening is disabled by default and can be adjusted by profile function set_sharpen.
+
+python 3.0.9 // matlab 3.0.9
+
+Update all references to the TIP paper, adjust block shifting and fix a binary bug related to using some simplified variances.
+
+python 3.0.7 // matlab 3.0.7
+ 
+Fix parameter selection bug with small image size and adjust the profile. Add an error message when trying to denoise images smaller than block size.
+
+
+python 3.0.6 // matlab 3.0.5
+
+Input/output image data is no longer restricted to range [0, 1].
+
+
+python 3.0.5 // matlab 3.0.4
+
+Wiener scaling parameter is now called 'mu2', and refiltering parameters are indicated with a '_re' naming extension.
+Demo noise kernel generation logic now follows submitted manuscript.
+
+
+python 3.0.4
+
+Python binaries for MacOS now include relevant OpenBLAS functions, and should work without a separate OpenBLAS installation.
+
+
+python 3.0.3 // matlab 3.0.3
+
+Rewrote README.
+
+Python: 
+bm3d_color is now called bm3d_rgb to avoid confusion about the functionality.
+Fixed some problems with custom profiles and wavelets and simplified OpenBLAS handling.
+
+
+python 3.0.2 // matlab 3.0.2
+
+Multichannel and rgb image handling is now better commented on the BM3D functions & demo files.
+Python:
+Simplified package contents, removed unused binaries.
+

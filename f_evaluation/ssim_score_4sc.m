@@ -8,10 +8,10 @@ function ssim_mean = ssim_score_4sc(X,Y)
     [I,J,K] = size(X);
     Y = reshape(Y,[I,J,K]);
     
-    X = 10*log10(X+1e-12);
-    Y = 10*log10(Y+1e-12);
-    % X = 10*log10(X+1e-10);
-    % Y = 10*log10(Y+1e-10);
+    % X = 10*log10(X+1e-12);
+    % Y = 10*log10(Y+1e-12);
+    X = 10*log10(X+1e-10);
+    Y = 10*log10(Y+1e-10);
 
     min_xy = min([Y(:)]);
     X = X + min_xy;

@@ -22,8 +22,8 @@ seed = par.seed;
 rng(seed)
 
 %% Obtain RadioMapSeer Smap
-building_folder = strcat(pwd,"\DATA\RadioMapSeer\png\buildings_complete\");
-building_file = sprintf("%s%d.png",building_folder,par.map_number);
+building_folder = fullfile(pwd, 'DATA', 'RadioMapSeer', 'png', 'buildings_complete');
+building_file = fullfile(building_folder, sprintf('%d.png', par.map_number));
 
 mask = imread(building_file);
 mask = double(mask)./255;
@@ -31,12 +31,12 @@ mask = imresize(mask, par.downsample_rate);
 mask(mask>0.1) = 1;
 mask(mask<=0.1) = 0;
 
-Sc_folder = strcat(pwd,"\DATA\RadioMapSeer\gain\");
+Sc_folder = fullfile(pwd, 'DATA', 'RadioMapSeer', 'gain');
 R = length(par.emitter_number);
 Sc = zeros([256*par.downsample_rate,256*par.downsample_rate,R]);
 for r = 1:R
-    Sc_file = sprintf("%s%s\\%d_%d.png",Sc_folder,par.RTmethod,...
-        par.map_number,par.emitter_number(r));
+    Sc_file = fullfile(Sc_folder, par.RTmethod, ...
+        sprintf("%d_%d.png", par.map_number,par.emitter_number(r)));
     Sc_temp = double(imread(Sc_file))./255;
     Sc(:,:,r) = imresize(Sc_temp, par.downsample_rate);
 end

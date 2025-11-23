@@ -5,22 +5,25 @@ addpath(('f_data'))
 addpath(genpath('f_alg'))
 addpath('f_evaluation')
 
-% Load bm3d denoiser
-addpath(genpath('Denoisers/BM3D'))
+% Load BM3D denoiser
+addpath(genpath(fullfile(pwd, 'Denoisers', 'BM3D')));
 
 % Load DRUnet, utils has been changed to utils1
-addpath(strcat(pwd,'\Denoisers\DPIR-master'));
-py_path = [strcat(pwd,"\Denoisers\DPIR-master"),...
-    strcat(pwd,"\Denoisers\DPIR-master\utils1"),...
-    strcat(pwd,"\Denoisers\DPIR-master\model_zoo")];
+addpath(fullfile(pwd, 'Denoisers', 'DPIR-master'));
+py_path = { ...
+    fullfile(pwd, 'Denoisers', 'DPIR-master'), ...
+    fullfile(pwd, 'Denoisers', 'DPIR-master', 'utils1'), ...
+    fullfile(pwd, 'Denoisers', 'DPIR-master', 'model_zoo') ...
+};
 
 for i = 1:length(py_path)
-    if count(py.sys.path,py_path(i)) == 0
-        insert(py.sys.path,int32(0),py_path(i));
+    if count(py.sys.path,py_path{i}) == 0
+        insert(py.sys.path,int32(0),py_path{i});
     end
 end
 dpirModel = py.importlib.import_module('dpir_denoising_interface');
 py.importlib.reload(dpirModel);
+
 
 %% user define
 map_size = [51,51,32];
