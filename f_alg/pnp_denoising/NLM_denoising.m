@@ -1,5 +1,7 @@
 function [Z_est,denoiser] = NLM_denoising(S,W,rho,lambda,varargin)
     
+    need_full_W = (nargout >= 2) || ~isempty(varargin);
+
     R = size(S,3);
     inputNoiseSigma = sqrt(mean(lambda)/rho);  % input noise level
 
@@ -35,12 +37,16 @@ function [Z_est,denoiser] = NLM_denoising(S,W,rho,lambda,varargin)
         
         N_window = 5;
         N_p = 2;
-        if isempty(varargin)
-            [output,denoiser{rr}] = DSG_NLM(input, inputNoiseSigma, N_window, N_p);
+        if need_full_W
+            if isempty(varargin)
+                [output,denoiser{rr}] = DSG_NLM(input, inputNoiseSigma, N_window, N_p);
+            else
+                [output,denoiser{rr}] = DSG_NLM(input, inputNoiseSigma, N_window, N_p, denoiser{rr});
+            end
         else
-            [output,denoiser{rr}] = DSG_NLM(input, inputNoiseSigma, N_window, N_p, denoiser{rr});
+            output = DSG_NLM_MEMefficient(input, inputNoiseSigma, N_window, N_p);
+            denoiser{rr} = [];
         end
-        
         Z_est(:,:,rr) = output*Normalizer;
         Z_est(:,:,rr) = max(Z_est(:,:,rr) - input_addition,0);
     end

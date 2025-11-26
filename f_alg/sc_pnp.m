@@ -22,19 +22,20 @@ function [X_est, time_est, S_est, C_est] = sc_pnp(X_observed, Omega, R, Denoiser
 % "Radio Map Estimation via Latent Domain Plug-and-Play Denoising",
 % Le Xu, Lei Cheng, Junting Chen, Wenqiang Pu, and Xiao Fu
 %
-% Written by Le XU, updated by Dec 23rd, 2024
+% Written by Le XU, updated by Nov 26, 2025
 % -------------------------------------------------------------------------
 
 %% Parse parameters
 p = inputParser;
 addOptional(p,'Denoiser',@isstring);
 
-addOptional(p,'max_iter',20,@isnumeric);
+addOptional(p,'max_iter',30,@isnumeric);
 addOptional(p,'threshold',1e-2,@isnumeric);
 addOptional(p,'X_true',X_observed,@isnumeric);
 addOptional(p,'S_true',0,@isnumeric); % for test only
 addOptional(p,'C_true',0,@isnumeric); % for test only
 addOptional(p,'BuildingMask',0,@isnumeric);  
+addOptional(p,'NLM_MEMORY_EFF',false,@islogical)
 
 switch Denoiser
     case "BM3D"
@@ -71,6 +72,7 @@ S_true = par.S_true;
 C_true = par.C_true;
 BuildingMask = par.BuildingMask;
 max_iternum = par.max_iter;
+KEEP_W = ~par.NLM_MEMORY_EFF;
 
 th = par.threshold;
 ShowInfo = par.ShowInfo; 
@@ -122,10 +124,14 @@ for i = 1:max_iternum
         case "DPIRNet"
             Z_est = dpir_denoising(S_est,W,rho,lambda,BuildingMask);
         case "NLM"
-            if i <= 10
-                [Z_est,denoiser_W] = NLM_denoising(S_est,W,rho,lambda);
+            if KEEP_W
+                if i <= 10
+                    [Z_est,denoiser_W] = NLM_denoising(S_est,W,rho,lambda);
+                else
+                   Z_est = NLM_denoising(S_est,W,rho,lambda,denoiser_W);
+                end
             else
-               Z_est = NLM_denoising(S_est,W,rho,lambda,denoiser_W);
+                Z_est = NLM_denoising(S_est,W,rho,lambda);
             end
     end
 

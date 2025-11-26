@@ -34,8 +34,6 @@ py.importlib.reload(dpirModel);
 I = 128; J = 128; K = 32;
 map_size = [I,J,K];
 R = 3;
-shadow_sigma = 6;
-d_corr =  50;
 use_snr = false;
 snr = 20;
 sampleRate = 0.05;
