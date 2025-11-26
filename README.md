@@ -4,6 +4,11 @@ This is the source code for our paper "Radio Map Estimation via Latent Domain Pl
 
 Remember to cite our paper [1] if you use the code.
 
+## Update (2025.11.26)
+
+- Add demo code for RT data under 256x256 resolution.
+- Now all three denoisers support running under both Windows and Mac with M-series chips (thanks to the updates in BM3D).
+
 ## Requirements
 
 LaPnP plugs in exsisting denoisers as an update step. Following denoisers are used.
